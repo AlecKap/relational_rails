@@ -4,7 +4,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :city
       t.integer :position_in_standings
-      t.boolean :stanely_cup
+      t.boolean :stanley_cup
 
       t.timestamps
     end

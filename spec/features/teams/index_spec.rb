@@ -9,8 +9,7 @@ RSpec.describe '/teams', type: :feature do
      
     it 'displays the name of all the teams' do
       visit '/teams' 
-      save_and_open_page
-
+    save_and_open_page
       expect(page).to have_content(team_1.name)
       expect(page).to have_content(team_2.name)
       expect(page).to have_content(team_3.name)

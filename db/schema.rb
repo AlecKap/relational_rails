@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2023_03_21_221943) do
     t.string "name"
     t.string "city"
     t.integer "position_in_standings"
-    t.boolean "stanely_cup"
+    t.boolean "stanley_cup"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
