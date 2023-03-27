@@ -33,5 +33,19 @@ RSpec.describe '/teams/:id', type: :feature do
       save_and_open_page
       expect(page).to have_content("Number of Players: #{@team_2.num_of_players}")
     end
+
+    it 'has a link to players index page' do
+      visit "/teams/#{@team_2.id}"
+
+      click_on "Players page"
+      expect(current_path).to eq("/players")
+    end
+
+    it 'has a link to teams index page' do
+      visit "/teams/#{@team_2.id}"
+
+      click_on "Teams page"
+      expect(current_path).to eq("/teams")
+    end
   end
 end

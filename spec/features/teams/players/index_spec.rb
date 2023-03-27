@@ -29,5 +29,19 @@ RSpec.describe '/teams/:team_id/players', type: :feature do
       expect(page).to have_content(player_2.jersey_number)
       expect(page).to have_content(player_2.stanley_cup)
     end
+
+    it 'has a link to players index page' do
+      visit "/teams/#{team_1.id}/players"
+
+      click_on "Players page"
+      expect(current_path).to eq("/players")
+    end
+
+    it 'has a link to teams index page' do
+      visit "/teams/#{team_1.id}/players"
+
+      click_on "Teams page"
+      expect(current_path).to eq("/teams")
+    end
   end
 end
