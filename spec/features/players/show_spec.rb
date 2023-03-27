@@ -7,7 +7,7 @@ RSpec.describe '/players', type: :feature do
 
     it 'displays the name of all the players and their attributes' do
       visit "/players/#{player_1.id}" 
-      save_and_open_page
+    
 
       expect(page).to have_content(player_1.name)
       expect(page).to have_content(player_1.position)

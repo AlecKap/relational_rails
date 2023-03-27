@@ -4,7 +4,6 @@ class PlayersController < ApplicationController
   end
 
   def show
-    # binding.pry
     @player = Player.find(params[:id])
   end
 end
