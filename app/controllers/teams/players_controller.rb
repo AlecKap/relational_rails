@@ -1,4 +1,3 @@
-
 class Teams::PlayersController < ApplicationController
   def index
     @team = Team.find(params[:team_id])
