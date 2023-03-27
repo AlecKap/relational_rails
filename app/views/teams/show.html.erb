@@ -3,3 +3,5 @@
 <p>Position In Standings: <%= @team.position_in_standings  %></p>
 <p>Has Won the Stanley Cup: <%= @team.stanley_cup  %></p>
 <p>Number of Players: <%= @team.num_of_players %></p>
+<p><%= link_to "Player Roster", "/teams/#{@team.id}/players" %></p>
+
