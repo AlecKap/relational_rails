@@ -47,5 +47,13 @@ RSpec.describe '/teams/:id', type: :feature do
       click_on "Teams page"
       expect(current_path).to eq("/teams")
     end
+
+    it 'has a link to this teams players' do
+      visit "teams/#{@team_1.id}"
+save_and_open_page
+      click_on "Player Roster"
+
+      expect(current_path).to eq("/teams/#{@team_1.id}/players")
+    end
   end
 end
