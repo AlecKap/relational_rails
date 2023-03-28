@@ -47,8 +47,9 @@ RSpec.describe '/teams/:team_id/players', type: :feature do
 
     it 'has link to create player' do
       visit "/teams/#{@team_1.id}/players"
-      save_and_open_page
+      
       click_on "Create Player"
+      
       expect(current_path).to eq("/teams/#{@team_1.id}/players/new")
     end
   end

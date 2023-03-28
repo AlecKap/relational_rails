@@ -58,5 +58,13 @@ RSpec.describe '/teams', type: :feature do
       click_on "New Team"
       expect(current_path).to eq("/teams/new")
     end
+
+    it 'has link to edit team' do
+      visit "/teams"
+      
+      click_on "Edit #{@team_1.name}"
+      save_and_open_page
+      expect(current_path).to eq("/teams/#{@team_1.id}/edit")
+    end
   end
 end
