@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe '/players', type: :feature do
-  describe 'as a visitor I visit the players index page' do
+  describe 'as a visitor when I visit the players index page' do
     before(:each) do
       @team_1 = Team.create!(name: 'Pittsburgh Penguins', city: 'Pittsburgh', position_in_standings: 2, stanley_cup: true)
       @player_1 = @team_1.players.create!(name: 'Sidney Crosby', position: 'C', jersey_number: 87, stanley_cup: true)

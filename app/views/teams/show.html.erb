@@ -1,8 +1,10 @@
 <h2><%= @team.name  %></h2>
+<p><%= link_to "Player Roster", "/teams/#{@team.id}/players" %></p>
+<br>
 <p>Home City: <%= @team.city  %></p>
 <p>Position In Standings: <%= @team.position_in_standings  %></p>
 <p>Has Won the Stanley Cup: <%= @team.stanley_cup  %></p>
 <p>Number of Players: <%= @team.num_of_players %></p>
-<p><%= link_to "Player Roster", "/teams/#{@team.id}/players" %></p>
 <p><%= link_to "Update Team", "/teams/#{@team.id}/edit" %></p>
+<p><%= link_to "Delete #{@team.name}", "/teams/#{@team.id}", method: :delete %></p>
 

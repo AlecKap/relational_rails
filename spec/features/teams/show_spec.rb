@@ -30,7 +30,7 @@ RSpec.describe '/teams/:id', type: :feature do
     
     it 'displays a count of the number of player associated with this team' do
       visit "/teams/#{@team_2.id}"
-      save_and_open_page
+     
       expect(page).to have_content("Number of Players: #{@team_2.num_of_players}")
     end
 
@@ -56,12 +56,22 @@ RSpec.describe '/teams/:id', type: :feature do
       expect(current_path).to eq("/teams/#{@team_1.id}/players")
     end
 
-    it 'I see a link to update the parent' do
+    it 'I see a link to update the team' do
       visit "teams/#{@team_1.id}"
       
       click_on "Update Team"
       
       expect(current_path).to eq("/teams/#{@team_1.id}/edit")
+    end
+
+    it 'I see a link to delete the team' do
+      visit "/teams/#{@team_1.id}"
+      expect(page).to have_content(@team_1.name)
+      click_on "Delete #{@team_1.name}"
+      
+      expect(page).to_not have_content(@team_1.name)
+      save_and_open_page
+      expect(current_path).to eq("/teams")
     end
   end
 end

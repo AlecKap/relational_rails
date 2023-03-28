@@ -15,6 +15,7 @@ RSpec.describe '/teams/:team_id/players', type: :feature do
       @player_6 = @team_2.players.create!(name: 'Mikko Rantanen', position: 'RW', jersey_number: 29, stanley_cup: true)
       @player_7 = @team_3.players.create!(name: 'Matty Beniers', position: 'C', jersey_number: 10, stanley_cup: false )
       @player_8 = @team_3.players.create!(name: 'Mike guy', position: 'C', jersey_number: 10, stanley_cup: false )
+      @player_9 = @team_2.players.create!(name: 'Cale Makar', position: 'RD', jersey_number: 8, stanley_cup: true)
     end
 
     it 'displays each associated player and thier attributes' do
@@ -60,5 +61,17 @@ RSpec.describe '/teams/:team_id/players', type: :feature do
 
       expect(current_path).to eq("/players/#{@player_1.id}/edit")
     end
+    
+    it 'has a link to sort players in alphabetical order' do
+      visit "/teams/#{@team_2.id}/players"
+      click_on "Sort Players Alphabetically"
+      save_and_open_page
+  
+      expect(current_path).to eq("/teams/#{@team_2.id}/players")
+      expect(@player_9.name).to appear_before(@player_6.name)
+      expect(@player_9.name).to appear_before(@player_5.name)
+      expect(@player_6.name).to appear_before(@player_5.name)
+    end
   end
+
 end

@@ -1,4 +1,6 @@
 <h2><%="#{@team.name}" %> Team Roster</h2>
+<p><%= link_to 'Create Player', "/teams/#{@team.id}/players/new" %> </p>
+<p><%= link_to 'Sort Players Alphabetically', "/teams/#{@team.id}/players?order=name" %></p>
 <br>
 <% @players.each do |player| %>
 <h2><%= player.name %></h2>
@@ -8,4 +10,3 @@
 <p><%= link_to "Edit #{player.name}", "/players/#{player.id}/edit" %> </p>
 <% end %>
 <br>
-<p><%= link_to 'Create Player', "/teams/#{@team.id}/players/new" %> </p>
