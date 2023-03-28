@@ -19,7 +19,6 @@ RSpec.describe '/players', type: :feature do
 
     it 'displays only the name of players and their attributes who have won the stanley cup' do
       visit '/players' 
-      save_and_open_page
 
       expect(page).to have_content(@player_1.name)
       expect(page).to have_content(@player_1.position)
@@ -70,8 +69,17 @@ RSpec.describe '/players', type: :feature do
       
       click_on "Edit #{@player_1.name}"
 
-
       expect(current_path).to eq("/players/#{@player_1.id}/edit")
+    end
+
+    it 'I see a link to delete the player' do
+      visit "/players/#{@player_1.id}"
+      expect(page).to have_content(@player_1.name)
+save_and_open_page
+      click_on "Delete #{@player_1.name}"
+      
+      expect(page).to_not have_content(@player_1.name)
+      expect(current_path).to eq("/players")
     end
   end
 end

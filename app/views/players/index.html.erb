@@ -6,4 +6,5 @@
 <p>Jersey Number: <%= player.jersey_number %></p>
 <p>Stanley Cup: <%= player.stanley_cup %></p>
 <p><%= link_to "Edit #{player.name}", "/players/#{player.id}/edit" %> </p>
+<p><%= link_to "Delete #{player.name}", "/players/#{player.id}", method: :delete %></p>
 <% end %>

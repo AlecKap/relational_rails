@@ -72,6 +72,16 @@ RSpec.describe '/teams/:team_id/players', type: :feature do
       expect(@player_9.name).to appear_before(@player_5.name)
       expect(@player_6.name).to appear_before(@player_5.name)
     end
+
+    it 'has a link to delete the player next to each player' do
+      visit "/players/#{@player_1.id}"
+      expect(page).to have_content(@player_1.name)
+
+      click_on "Delete #{@player_1.name}"
+      
+      expect(page).to_not have_content(@player_1.name)
+      expect(current_path).to eq("/players")
+    end
   end
 
 end

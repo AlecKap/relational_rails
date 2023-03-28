@@ -44,10 +44,9 @@ RSpec.describe '/players/:id', type: :feature do
       visit "/players/#{@player_1.id}"
       expect(page).to have_content(@player_1.name)
 
-      click_on "Delete This Player"
+      click_on "Delete #{@player_1.name}"
       
       expect(page).to_not have_content(@player_1.name)
-      save_and_open_page
       expect(current_path).to eq("/players")
     end
   end
