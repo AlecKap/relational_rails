@@ -49,8 +49,16 @@ RSpec.describe '/teams/:team_id/players', type: :feature do
       visit "/teams/#{@team_1.id}/players"
       
       click_on "Create Player"
-      
+
       expect(current_path).to eq("/teams/#{@team_1.id}/players/new")
+    end
+
+    it 'has links to edit players ' do
+      visit "/teams/#{@team_1.id}/players"
+      
+      click_on "Edit #{@player_1.name}"
+
+      expect(current_path).to eq("/players/#{@player_1.id}/edit")
     end
   end
 end
