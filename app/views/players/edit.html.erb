@@ -1,0 +1,11 @@
+<%= form_with url: "/players/#{@player.id}", method: :patch, local: true do |form| %>
+  <p><%= form.label :name, "Update Name:" %></p>
+    <%= form.text_field :name, value: "#{@player.name}" %>
+  <p><%= form.label :position, "Update Position:" %></p>
+    <%= form.text_field :position, value: "#{@player.position}" %>
+  <p><%= form.label :jersey_number, "Update Jersey Number:" %></p>
+    <%= form.text_field :jersey_number, value: "#{@player.jersey_number}" %>
+  <p><%= form.label :stanley_cup, "Stanley Cup" %></p>
+    <%= form.select :stanley_cup, [["Yes", true] , ["No", false]] %>
+  <p> <%= form.submit "submit updates to player" %></p>
+<% end %>

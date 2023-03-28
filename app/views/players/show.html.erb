@@ -2,3 +2,4 @@
 <p>Position: <%= @player.position %></p>
 <p>Jersey Number: <%= @player.jersey_number %></p>
 <p>Stanley Cup: <%= @player.stanley_cup %></p>
+<p><%= link_to "Update Player Information", "/players/#{@player.id}/edit" %></p>
