@@ -1,0 +1,11 @@
+<%= form_with method: :post, local: true do |form| %>
+  <p><%= form.label :name, "Name:" %></p>
+    <%= form.text_field :name %>
+  <p><%= form.label :position, "Position:" %></p>
+    <%= form.text_field :position %>
+  <p><%= form.label :jersey_number, "Jersey Number:" %></p>
+    <%= form.text_field :jersey_number %>
+  <p><%= form.label :stanley_cup, "Stanley Cup" %></p>
+    <%= form.select :stanley_cup, [["Yes", true] , ["No", false]] %>
+  <p> <%= form.submit "Create New Player" %></p>
+<% end %>

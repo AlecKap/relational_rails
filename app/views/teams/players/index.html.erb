@@ -1,6 +1,5 @@
 <h2><%="#{@team.name}" %> Team Roster</h2>
 <br>
-
 <% @players.each do |player| %>
 <h2><%= player.name %></h2>
 <p>Position: <%= player.position %></p>
@@ -8,3 +7,4 @@
 <p>Stanley Cup: <%= player.stanley_cup %></p>
 <%  end %>
 <br>
+<p><%= link_to 'Create Player', "/teams/#{@team.id}/players/new" %> </p>
