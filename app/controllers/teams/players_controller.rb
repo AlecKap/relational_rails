@@ -2,7 +2,6 @@ class Teams::PlayersController < ApplicationController
   def index
     @team = Team.find(params[:team_id])
     @players = @team.order_by_name(params)
-
   end
 
   def new

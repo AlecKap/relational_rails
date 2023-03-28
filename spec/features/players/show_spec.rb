@@ -1,13 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe '/players', type: :feature do
-  describe 'as a visitor when I visit the players index page' do
+RSpec.describe '/players/:id', type: :feature do
+  describe 'as a visitor when I visit the players show page' do
     before(:each) do
       @team_1 = Team.create!(name: 'Pittsburgh Penguins', city: 'Pittsburgh', position_in_standings: 2, stanley_cup: true)
       @player_1 = @team_1.players.create!(name: 'Sidney Crosby', position: 'C', jersey_number: 87, stanley_cup: true)
+      @player_2 = @team_1.players.create!(name: 'joe nhl', position: 'C', jersey_number: 67, stanley_cup: true)
     end
     
-    it 'displays the name of all the players and their attributes' do
+    it 'displays the player and their attributes' do
       visit "/players/#{@player_1.id}" 
     
 
@@ -33,9 +34,21 @@ RSpec.describe '/players', type: :feature do
 
     it 'has a link to update player' do
       visit "/players/#{@player_1.id}"
+
       click_on "Update Player Information"
-      save_and_open_page
+     
       expect(current_path).to eq("/players/#{@player_1.id}/edit")
+    end
+
+    it 'I see a link to delete the player' do
+      visit "/players/#{@player_1.id}"
+      expect(page).to have_content(@player_1.name)
+
+      click_on "Delete This Player"
+      
+      expect(page).to_not have_content(@player_1.name)
+      save_and_open_page
+      expect(current_path).to eq("/players")
     end
   end
 end

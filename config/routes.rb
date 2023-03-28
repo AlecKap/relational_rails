@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/teams/:id', to: 'teams#show'
   get '/teams/:id/edit', to: 'teams#edit'
   patch '/teams/:id', to: 'teams#update'
+  delete '/players/:id', to: 'players#delete'
   get '/players', to: 'players#index'
   get '/players/:id', to: 'players#show'
   get '/players/:id/edit', to: 'players#edit'

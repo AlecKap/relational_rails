@@ -17,6 +17,12 @@ class PlayersController < ApplicationController
     redirect_to "/players/#{@player.id}"
   end
 
+  def delete
+    @player = Player.find(params[:id])
+    @player.destroy
+    redirect_to '/players'
+  end
+
   private
   def player_params
     params.permit(:name, :position, :jersey_number, :stanley_cup)
