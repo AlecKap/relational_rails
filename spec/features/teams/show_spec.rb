@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe '/teams/:id', type: :feature do
-  describe 'as a visitor I visit team show page' do
+  describe 'as a visitor when I visit team show page' do
     before(:each) do
       @team_1 = Team.create!(name: 'Pittsburgh Penguins', city: 'Pittsburgh', position_in_standings: 2, stanley_cup: true) 
       @team_2 = Team.create!(name: 'Colorado Avalanche', city: 'Denver', position_in_standings: 1, stanley_cup: true) 
@@ -50,10 +50,18 @@ RSpec.describe '/teams/:id', type: :feature do
 
     it 'has a link to this teams players' do
       visit "teams/#{@team_1.id}"
-save_and_open_page
+
       click_on "Player Roster"
 
       expect(current_path).to eq("/teams/#{@team_1.id}/players")
+    end
+
+    it 'I see a link to update the parent' do
+      visit "teams/#{@team_1.id}"
+      
+      click_on "Update Team"
+      
+      expect(current_path).to eq("/teams/#{@team_1.id}/edit")
     end
   end
 end
