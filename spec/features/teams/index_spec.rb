@@ -63,8 +63,19 @@ RSpec.describe '/teams', type: :feature do
       visit "/teams"
       
       click_on "Edit #{@team_1.name}"
-      save_and_open_page
       expect(current_path).to eq("/teams/#{@team_1.id}/edit")
+    end
+    
+    it 'I see a link to delete the team' do
+      visit "/teams"
+      
+      expect(page).to have_content(@team_1.name)
+      
+      click_on "Delete #{@team_1.name}"
+      
+      save_and_open_page
+      expect(page).to_not have_content(@team_1.name)
+      expect(current_path).to eq("/teams")
     end
   end
 end

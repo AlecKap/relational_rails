@@ -1,8 +1,9 @@
 <h1>NHL Hockey Teams</h1>
+<p><%= link_to 'New Team', '/teams/new' %> </p>
 
 <% @teams.each do |team| %>
 <h2><%= team.name %></h2>
 <p>Created At: <%= team.created_at %></p>
 <p><%= link_to "Edit #{team.name}", "/teams/#{team.id}/edit" %> </p>
+<p><%= link_to "Delete #{team.name}", "/teams/#{team.id}", method: :delete %></p>
 <% end %>
-<p><%= link_to 'New Team', '/teams/new' %> </p>
